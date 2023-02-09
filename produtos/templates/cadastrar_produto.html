@@ -1,0 +1,12 @@
+{% extends 'templates/base.html' %}
+
+{% block conteudo %}
+<div>
+    <h2>Cadastre um produto</h2>
+    <form action="cadastrar" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Cadastrar" />
+    </form>
+</div>
+{% endblock conteudo %}
