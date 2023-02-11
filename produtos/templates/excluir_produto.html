@@ -1,0 +1,12 @@
+{% extends 'templates/base.html' %}
+
+{% block conteudo %}
+<div>
+    <h2>Deseja realmente excluir o produto {{ produto.nome }}?</h2>
+    <form action="excluir" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Excluir" />
+    </form>
+    <a href="/produtos/{{ produto.id }}">Voltar</a>
+</div>
+{% endblock %}

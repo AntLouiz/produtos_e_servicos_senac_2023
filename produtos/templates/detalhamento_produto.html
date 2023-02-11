@@ -4,6 +4,6 @@
 <div>
     <h3>Nome: {{ produto.nome }}</h3>
     <h3>Preço: {{ produto.preco }}</h3>
-    <a href="#">Excluir produto</a>
+    <a href="{{ produto.id }}/excluir">Excluir produto</a>
 </div>
 {% endblock %}
