@@ -1,0 +1,37 @@
+{% extends 'templates/base.html' %}
+
+{% block conteudo %}
+<style>
+    .page-container {
+        display: grid;
+        justify-content: center;
+    }
+
+    form {
+        width: 200px;
+    }
+
+    form > input[type="submit"] {
+        float: right;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .container-form {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+</style>
+<div class="page-container">
+    <h2>Altere o produto {{ form.instance.nome }}</h2>
+    <form action="alterar" method="post">
+        <div class='container-form'>
+            {% csrf_token %}
+            {{ form }}
+        </div>
+        <a href="/produtos/{{ form.instance.id }}">Voltar</a>
+        <input type="submit" value="Alterar" />
+    </form>
+</div>
+{% endblock conteudo %}
