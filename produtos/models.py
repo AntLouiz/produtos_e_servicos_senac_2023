@@ -14,3 +14,6 @@ class Produto(models.Model):
     estoque = models.IntegerField(default=0)
     tipo = models.CharField(max_length=2, choices=TIPOS_CHOICES, default=TIPO_PRODUTO)
     excluido = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.get_tipo_display()}: {self.nome}'

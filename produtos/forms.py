@@ -5,3 +5,9 @@ class ProdutoModelForm(ModelForm):
     class Meta:
         model = Produto
         fields = ['nome', 'preco', 'estoque']
+
+
+class ServicoModelForm(ModelForm):
+    class Meta:
+        model = Produto
+        fields = ['nome', 'preco']

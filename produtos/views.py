@@ -1,16 +1,27 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from produtos.models import Produto
-from produtos.forms import ProdutoModelForm
+from produtos.models import Produto, TIPO_PRODUTO, TIPO_SERVICO
+from produtos.forms import ProdutoModelForm, ServicoModelForm
 
 def listagem_produtos(request):
-    produtos = Produto.objects.filter(excluido=False)
+    produtos = Produto.objects.filter(tipo=TIPO_PRODUTO, excluido=False)
     produtos_dos_vendedores = [{
         'vendedor': {'nome': 'John Doe'},
         'produtos': produtos
     }]
     context = {'produtos_dos_vendedores': produtos_dos_vendedores }
     return render(request, 'templates/listagem_produtos.html', context)
+
+
+def listagem_servicos(request):
+    servicos = Produto.objects.filter(tipo=TIPO_SERVICO, excluido=False)
+    servicos_dos_vendedores = [{
+        'vendedor': {'nome': 'John Doe'},
+        'servicos': servicos
+    }]
+    context = {'servicos_dos_vendedores': servicos_dos_vendedores }
+    return render(request, 'templates/listagem_servicos.html', context)
+
 
 def detalhamento_produto(request, id):
     produto = get_object_or_404(Produto, pk=id)
@@ -32,6 +43,22 @@ def cadastro_produto(request):
         'form': form
     }
     return render(request, 'templates/cadastrar_produto.html', context)
+
+
+def cadastro_servico(request):
+    if request.method == 'POST':
+        form = ServicoModelForm(request.POST)
+        if form.is_valid():
+            produto = form.save(commit=False)
+            produto.tipo = TIPO_SERVICO
+            produto.save()
+            return HttpResponseRedirect('/servicos/')
+
+    form = ServicoModelForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'templates/cadastrar_servico.html', context)
 
 
 def alterar_produto(request, id):
