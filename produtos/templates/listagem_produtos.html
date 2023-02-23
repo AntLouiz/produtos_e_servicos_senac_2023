@@ -8,8 +8,14 @@
         </div>
         <ul>
         {% for produto in produtos_do_vendedor.produtos %}
-            <li>{{ produto.nome }} - R$ {{ produto.preco }}</li> <a href="{{ produto.id }}">Ver detalhes</a>
-        {% endfor %}
+            <li>
+                {{ produto.nome }} - R$ {{ produto.preco }}
+            </li> 
+            <a href="{{ produto.id }}">Ver detalhes</a>
+            {% if produto.imagem %}
+                <img src={{ produto.imagem.url }} class="imagem-produto" />
+            {% endif %}
+            {% endfor %}
         </ul>
     {% endfor %}
 {% endblock conteudo %}

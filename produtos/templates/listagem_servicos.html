@@ -8,7 +8,10 @@
         </div>
         <ul>
         {% for servico in servico_do_vendedor.servicos %}
-            <li>{{ servico.nome }} - R$ {{ servico.preco }}</li> <a href="{{ servico.id }}">Ver detalhes</a>
+            <li>{{ servico.nome }} - R$ {{ servico.preco }}</li>
+            {% if servico.imagem %}
+                <img src={{ servico.imagem.url }} class="imagem-produto" />
+            {% endif %}
         {% endfor %}
         </ul>
     {% endfor %}

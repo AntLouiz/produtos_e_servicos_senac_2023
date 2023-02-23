@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import index
 from produtos.views import listagem_servicos, cadastro_servico
 
@@ -24,4 +26,4 @@ urlpatterns = [
     path('produtos/', include('produtos.urls')),
     path('servicos/', listagem_servicos),
     path('servicos/cadastrar/', cadastro_servico, name='cadastrar_servicos')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
