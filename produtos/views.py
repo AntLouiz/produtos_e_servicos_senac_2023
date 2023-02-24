@@ -44,7 +44,7 @@ def detalhamento_produto(request, id):
 
 def cadastro_produto(request):
     if request.method == 'POST':
-        form = ProdutoModelForm(request.POST)
+        form = ProdutoModelForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/produtos/')

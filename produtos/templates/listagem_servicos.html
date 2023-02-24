@@ -1,7 +1,7 @@
 {% extends 'templates/base.html' %}
 
 {% block conteudo %}
-    Listagem de serviços <a href="cadastrar">Novo serviço</a>
+    Listagem de serviços <a href="{% url 'cadastrar_servicos' %}">Novo serviço</a>
     {% for servico_do_vendedor in servicos_dos_vendedores %}
         <div>
             <h3>{{ servico_do_vendedor.vendedor.nome }}</h3>

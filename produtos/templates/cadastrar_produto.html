@@ -25,7 +25,7 @@
 </style>
 <div class="page-container">
     <h2>Cadastre um produto</h2>
-    <form action="cadastrar" method="post">
+    <form action="cadastrar" method="post" enctype="multipart/form-data">
         <div class='container-form'>
             {% csrf_token %}
             {{ form }}
