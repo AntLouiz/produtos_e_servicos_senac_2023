@@ -2,6 +2,9 @@
 
 {% block conteudo %}
 <div>
+    {% if produto.imagem %}
+        <img src={{ produto.imagem.url }} class="imagem-produto" />
+    {% endif %}
     <h3>Nome: {{ produto.nome }}</h3>
     <h3>Preço: {{ produto.preco }}</h3>
     <a href="{{ produto.id }}/alterar">Alterar</a>

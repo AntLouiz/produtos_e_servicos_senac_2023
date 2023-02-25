@@ -1,4 +1,5 @@
 {% extends 'templates/base.html' %}
+{% load static %}
 
 {% block conteudo %}
     Listagem de produtos <a href="cadastrar">Novo produto</a>
@@ -14,6 +15,8 @@
             <a href="{{ produto.id }}">Ver detalhes</a>
             {% if produto.imagem %}
                 <img src={{ produto.imagem.url }} class="imagem-produto" />
+            {% else %}
+                <img src={% static 'imagens/default.png' %} class="imagem-produto" />
             {% endif %}
             {% endfor %}
         </ul>

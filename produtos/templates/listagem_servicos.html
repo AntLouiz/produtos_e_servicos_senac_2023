@@ -1,4 +1,5 @@
 {% extends 'templates/base.html' %}
+{% load static %}
 
 {% block conteudo %}
     Listagem de serviços <a href="{% url 'cadastrar_servicos' %}">Novo serviço</a>
@@ -11,6 +12,8 @@
             <li>{{ servico.nome }} - R$ {{ servico.preco }}</li>
             {% if servico.imagem %}
                 <img src={{ servico.imagem.url }} class="imagem-produto" />
+            {% else %}
+                <img src={% static 'imagens/default.png' %} class="imagem-produto" />
             {% endif %}
         {% endfor %}
         </ul>
