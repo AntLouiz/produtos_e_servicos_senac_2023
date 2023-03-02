@@ -16,7 +16,7 @@
             {% if produto.imagem %}
                 <img src={{ produto.imagem.url }} class="imagem-produto" />
             {% else %}
-                <img src={% static 'imagens/default.png' %} class="imagem-produto" />
+                <img src='/media/imagens/default.png' class="imagem-produto" />
             {% endif %}
             {% endfor %}
         </ul>
